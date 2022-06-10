@@ -1,4 +1,5 @@
 # Palettizer
+
 Generates SV modules that output a given image, compressed using a k-means quantizer.
 
 Wanted to create this because I saw so many people store their sprite and background data with raw pixel values, causing either low resolution or very long compile times, and that just pained me.
@@ -6,11 +7,12 @@ Therefore, I created this so you can still have beautiful pictures with low comp
 
 # How to use:
 
-1) Run "main.py" with python3
-2) Follow the instructions in the terminal. There are two provided images to try out.
-3) Look at the generated output image in the generated folder and decide if the settings were good enough.
-4) Put the generated folder into your main project directory and add the three sv files to your project.
-5) Instantiate the <picture_name>_mapper module
+1) Get all the required libraries (scikit-image and sklearn) by running "pip install -r requirements.txt"
+2) Run "main.py" with python3
+3) Follow the instructions in the terminal. There are two provided images to try out.
+4) Look at the generated output image in the generated folder and decide if the settings were good enough.
+5) Put the generated folder into your main project directory and add the three sv files to your project.
+6) Instantiate the <picture_name>_mapper module
 
 # Things to note:
 
