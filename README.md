@@ -8,8 +8,9 @@ Therefore, I created this so you can still have beautiful pictures with low comp
 
 1) run "main.py" with python3
 2) follow the instructions in the terminal. There are two provided images to try out.
-3) put the generated folder into your main project directory and add the three sv files to your project
-4) instantiate the <picture_name>_mapper module
+3) Look at the generated output image in the generated folder and decide if the settings were good enough.
+4) put the generated folder into your main project directory and add the three sv files to your project.
+5) instantiate the <picture_name>_mapper module
 
 Notes:
 - Deciding how many colors to use depends on your image. You will need to make a compromise between resolution and number of colors. Some images are mostly of one range of colors, while others may go across the entire spectrum. For example, "butterfly.jpg" is mostly yellow, so you can get away with only using 4 bits and thus having the full 640x480 resolution. "cat.jpg" uses many more colors though, so it will look better if you use 8 bits and sacrifice some resolution.
