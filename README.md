@@ -1,8 +1,8 @@
 # Palettizer
 Generates SV modules that output a given image, compressed using a k-means quantizer.
 
-Wanted to create this because I saw so many people store their sprite and background data with raw pixel values, and that just pained me.
-So, I created this so you can still have beautiful pictures with low compile times and efficient compression.
+Wanted to create this because I saw so many people store their sprite and background data with raw pixel values, causing either low resolution or very long compile times, and that just pained me.
+Therefore, I created this so you can still have beautiful pictures with low compile times and efficient compression.
 
 # How to use:
 
