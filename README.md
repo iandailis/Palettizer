@@ -8,7 +8,7 @@ Therefore, I created this so you can still have beautiful pictures with low comp
 # How to use:
 
 1) Get all the required libraries (scikit-image and sklearn) by running "pip install -r requirements.txt"
-2) Run "main.py" with python3
+2) Run "main.py"
 3) Follow the instructions in the terminal. There are two provided images to try out.
 4) Look at the generated output image in the generated folder and decide if the settings were good enough.
 5) Put the generated folder into your main project directory and add the three sv files to your project.
