@@ -7,7 +7,7 @@ Therefore, I created this so you can still have beautiful pictures with low comp
 # How to use:
 
 1) run "main.py" with python3
-2) follow the instructions in the terminal. There are two provided images to try out. Using more than 8 bits per pixel is not recommended.
+2) follow the instructions in the terminal. There are two provided images to try out.
 3) put the generated folder into your main project directory and add the three sv files to your project
 4) instantiate the <picture_name>_mapper module
 
