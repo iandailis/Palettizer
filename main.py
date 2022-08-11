@@ -21,20 +21,18 @@ def main():
 
 	# get resized image dimensions
 	try:
-		print("Press <Enter> without any input to auto-select the highest resolution.")
+		print("Press <Enter> without any input to auto-select the highest resolution for M9k blocks.")
 		image_x = int(input("Desired output horizontal resolution: "))
 		image_y = int(input("Desired output vertical resolution: "))
 	except:
 		print("Getting highest possible resolution... ", end="", flush=True)
 		image_x, image_y = best_resolution(k)
-		print("Image will be {} x {}".format(image_x, image_y))
+		print(f"""Image will be {image_x} x {image_y}""")
 
 	# check if parameters will fit into the M9k blocks
 	mbits_available = 182*1024*8 # 182 M9k blocks * 1024 bytes per block * 8 bits per block
 	mbits_used = image_x*image_y*k
-	print("Using {} / {} available M9k memory bits".format(mbits_used, mbits_available))
-	if (mbits_used > mbits_available):
-		raise(Exception("Too many bits, will not fit in DE-10 Lite using M9k blocks"))
+	print(f"""Using {mbits_used} / {mbits_available} available M9k memory bits""")
 	print("Design may still not fit. M9k block usage is weird.")
 
 	# resize the image
@@ -73,7 +71,7 @@ def main():
 	# show the result
 	write_png(image_palettized, palette, image_name, image_shape)
 
-	print("Output files are in ./{}/".format(image_name))
+	print(f"""Output files are in ./{image_name}/""")
 
 
 if (__name__ == "__main__"):

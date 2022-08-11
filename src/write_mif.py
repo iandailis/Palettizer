@@ -8,25 +8,25 @@ def write_mif(image_palettized, k, image_name):
 	width = k
 	depth = len(image_palettized)
 
-	buildString = f""
-
-	# construct header
-	buildString += f"WIDTH={width};\n"
-	buildString += f"DEPTH={depth};\n"
-	buildString += f"\n"
-	buildString += f"ADDRESS_RADIX=UNS;\n" # UNS = unsigned int
-	buildString += f"DATA_RADIX=UNS;\n"
-	buildString += f"\n"
-	buildString += f"CONTENT BEGIN\n"
+	buildString = (
+		# construct header
+		f"""WIDTH={width};\n"""
+		f"""DEPTH={depth};\n"""
+		f"""\n"""
+		f"""ADDRESS_RADIX=UNS;\n""" # UNS = unsigned int
+		f"""DATA_RADIX=UNS;\n"""
+		f"""\n"""
+		f"""CONTENT BEGIN\n"""
+	)
 
 	# write data in address : data format
 	for i, palette_index in enumerate(image_palettized):
-		buildString += f"\t{i} : {palette_index};\n"
+		buildString += f"""\t{i} : {palette_index};\n"""
 	
-	buildString += f"END;\n"
+	buildString += f"""END;\n"""
 
 	# write the data to the file
-	mif_name = f"./{image_name}/{image_name}.mif"
+	mif_name = f"""./{image_name}/{image_name}.mif"""
 	with open(mif_name, "w") as f:
 		f.write(buildString)
 

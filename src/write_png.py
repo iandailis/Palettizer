@@ -8,7 +8,7 @@ def write_png(image_palettized, palette, image_name, image_shape):
 	for i, palette_index in enumerate(image_palettized):
 		output_image[i // image_shape[1]][i % image_shape[1]] = palette[palette_index]
 
-	output_name = f"./{image_name}/{image_name}_out.png"
+	output_name = f"""./{image_name}/{image_name}_out.png"""
 	imsave(output_name, output_image)
 
 	print("Done")
