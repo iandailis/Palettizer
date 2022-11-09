@@ -9,7 +9,7 @@ Therefore, I created this so you can still have beautiful pictures with low comp
 
 1) Get all the required libraries (scikit-image and sklearn) by running "pip install -r requirements.txt"
 2) Run "main.py"
-3) Follow the instructions in the terminal. There are two provided images to try out. EDIT: USE RELATIVE PATH, ABSOLUTE PATH MAY NOT WORK
+3) Follow the instructions in the terminal. There are two provided images to try out. EDIT: USE RELATIVE PATH, ABSOLUTE PATH MAY NOT WORK. PUT THE IMAGE IN THE SAME FOLDER AS main.py
 4) Look at the generated output image in the generated folder and decide if the settings were good enough.
 5) Put the generated folder into your main project directory and add the three sv files to your project.
 6) Instantiate the <picture_name>_mapper module
