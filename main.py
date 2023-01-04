@@ -13,11 +13,11 @@ from os import makedirs
 
 def main():
 	# open input image
-	image_path = input("Path to input image (relative or absolute): ")
+	image_path = input("Input image (eg: cat.jpg): ")
 	image = imread(image_path).astype("uint8")
 
 	# get number of colors to compress into
-	k = int(input("Number of bits per pixel to store (only tested up to 8): "))
+	k = int(input("Number of bits per pixel to store: "))
 
 	# get resized image dimensions
 	image_x = int(input("Desired output horizontal resolution: "))
@@ -28,7 +28,7 @@ def main():
 	mbits_used = image_x*image_y*k
 	print(f"""Using {mbits_used} / {mbits_available} available M9k memory bits""")
 	if (mbits_used > mbits_available):
-		print("WARNING: DESIGN WON'T FIT INTO M9K BLOCKS")
+		print("WARNING: DESIGN PROBABLY WON'T FIT INTO M9K BLOCKS")
 	else:
 		print("Design may still not fit. M9k block usage is weird.")
 
@@ -68,7 +68,3 @@ def main():
 
 if (__name__ == "__main__"):
 	main()
-	# try:
-	# 	main()
-	# except Exception as e:
-	# 	print(e)
