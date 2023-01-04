@@ -1,5 +1,6 @@
 from numpy import array as np_array
 from sklearn.cluster import KMeans
+from warnings import catch_warnings, simplefilter
 
 def palettizer(image, k):
 	"""
@@ -14,13 +15,21 @@ def palettizer(image, k):
 	kmeans = KMeans(n_clusters = k)
 
 	# reshape pixel value to be like data points
-	pixel_vals = np_array([(image[row,col] & 0xF0) for row in range(n_rows) for col in range(n_cols)])
-
-	# fit the k-means model to pixel data and get color labels
-	image_palettized = kmeans.fit_predict(pixel_vals)
+	pixel_vals = np_array([image[row,col] for row in range(n_rows) for col in range(n_cols)])
+	
+	# catch FutureWarnings because sklearn things
+	with catch_warnings():
+		simplefilter(action='ignore', category=FutureWarning)
+		# fit the k-means model to pixel data and get color labels
+		image_palettized = kmeans.fit_predict(pixel_vals)
 
 	# get the palette
 	palette = kmeans.cluster_centers_.astype("uint8")
+
+	# compress colors to 4 bit
+	for i in range(len(palette)):
+		for j in range(len(palette[i])):
+			palette[i][j] &= 0xF0
 
 	print("Done")
 	return image_palettized, palette

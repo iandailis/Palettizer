@@ -1,5 +1,5 @@
 from numpy import zeros as np_zeros
-from skimage.io import imsave
+from imageio import imsave
 
 def write_png(image_palettized, palette, image_name, image_shape):
 	print("Generating output image... ", end="", flush=True)
