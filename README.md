@@ -7,14 +7,13 @@ Therefore, I created this so you can still have beautiful pictures with low comp
 
 # How to use:
 
-1) Download Python (developed on 3.11.1 for Windows 10, but other configurations should also work)
+1) Download Python (developed on 3.11.1 for Windows 10, but other configurations should also work).
 2) Open a terminal. For Windows, use powershell.
-3) Get all the required libraries by running ```pip install -r requirements.txt```
-2) Run ```python main.py```
-3) Follow the instructions in the terminal. There are two provided images to try out.
-4) Look at the generated output image in the generated folder and decide if the settings were good enough.
-5) Put the generated folder into your main project directory and add the three sv files to your project.
-6) Instantiate the <picture_name>_mapper module
+3) Get all the required libraries by running ```pip install -r requirements.txt```. A virtual environment is recommended here but not required.
+4) Run ```python main.py```
+5) Follow the instructions in the terminal. There are two provided images to try out.
+6) Look at the generated output image in the generated folder and decide if the settings were good enough.
+7) Put the generated folder into your main project directory.
 
 # Things to note:
 
@@ -32,6 +31,10 @@ Now, run the pip commands to install packages and it will not be cluttering the 
 - M9K usage is weird. Just because a M9K has a certain number of bits, doesn't mean that it will be able to use it all effectively, depending on the data width.
 
 - This program generates three files so that you can use bits and pieces if you want. If you are making a sprite, don't use the mapper sv file, and just take the rom and palette.
+
+# FAQ:
+
+- Why does it say "" ?
 
 Enjoy!
 -Ian
