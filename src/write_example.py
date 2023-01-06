@@ -1,12 +1,12 @@
 from math import ceil, log2
 
-def write_mapper(image_name, image_shape, width, depth):
-	print("Generating mapper module... ", end="", flush=True)
+def write_example(image_name, image_shape, width, depth):
+	print("Generating example module... ", end="", flush=True)
 
 	# build the file
 	buildString = (
 		# module header
-		f"""module {image_name}_mapper (\n"""
+		f"""module {image_name}_example (\n"""
 		f"""\tinput logic [9:0] DrawX, DrawY,\n"""
 		f"""\tinput logic vga_clk, blank,\n"""
 		f"""\toutput logic [3:0] red, green, blue\n"""
@@ -14,14 +14,14 @@ def write_mapper(image_name, image_shape, width, depth):
 		f"""\n"""
 
 		# variable instantiations
-		f"""logic [{ceil(log2(depth))}:0] rom_address;\n"""
-		f"""logic [{width}:0] rom_q;\n"""
+		f"""logic [{ceil(log2(depth))-1}:0] rom_address;\n"""
+		f"""logic [{width-1}:0] rom_q;\n"""
 		f"""\n"""
 		f"""logic [3:0] palette_red, palette_green, palette_blue;\n"""
 		f"""\n"""
 
 		# address into the rom = x*xDim/640 + y*yDim/480 * xDim
-		f"""assign rom_address = (DrawX*{image_shape[1]}/640) + (DrawY*{image_shape[0]}/480 * {image_shape[1]});\n"""
+		f"""assign rom_address = ((DrawX * {image_shape[1]}) / 640) + (((DrawY * {image_shape[0]}) / 480) * {image_shape[1]});\n"""
 		f"""\n"""
 
 		# set rgb values synchronously, taking into account the blank signal 
@@ -58,7 +58,7 @@ def write_mapper(image_name, image_shape, width, depth):
 		f"""endmodule\n"""
 	)
 	# write to file
-	with open(f"""./{image_name}/{image_name}_mapper.sv""", "w") as f:
+	with open(f"""./{image_name}/{image_name}_example.sv""", "w") as f:
 		f.write(buildString)
 
 	print("Done")
