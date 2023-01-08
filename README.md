@@ -87,5 +87,9 @@ Essentially, do:
 
 * M9K usage is weird. Just because a M9K has a certain number of bits, doesn't mean that it will be able to use it all effectively, depending on the data width.
 
+# Known Bugs:
+
+* At low resolutions there are some visual artifacts when using the example mapper. Not sure why.
+
 Enjoy!
 -Ian D
