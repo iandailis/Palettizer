@@ -13,9 +13,9 @@ I created this tool because I saw so many people store their sprite and backgrou
 5) Follow the instructions in the terminal. There are two provided images to try out: cat.jpg and butterfly.jpg
 6) Look at the output image in the generated folder and verify that your chosen settings look okay.
 7) Put the entire generated folder into your quartus project directory (that's the same place as your .qpf file).
-8) Add the three .sv files in the folder to your Quartus project (rom, palette, and example).
+8) Add the three generated .sv files in the folder to your Quartus project (rom, palette, and example).
 9) Instantiate the example module in your project and  connect all the signals.
-10) Compile then program the FPGA and verify that you see your generated image on the screen. If so, the tool has worked!
+10) Compile then program the FPGA and verify that you see your generated image on the screen. 
 
 # FAQ:
 
