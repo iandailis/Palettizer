@@ -7,15 +7,35 @@ I created this tool because I saw so many people store their sprite and backgrou
 # How to use:
 
 1) Download Python 3 (developed on 3.11.1 for Windows 10).
-2) Open a terminal. (powershell on Windows). (Optional: Activate your python virtual environment)
+2) Open a terminal. (PowerShell on Windows) (Optional: Activate your python virtual environment, instructions below).
 3) Run ```pip install -r requirements.txt```.
-4) Run ```python main.py```
-5) Follow the instructions in the terminal. There are two provided images to try out: cat.jpg and butterfly.jpg
+4) Run ```python main.py```.
+5) Follow the instructions in the terminal. There are two provided images to try out: ```cat.jpg``` and ```butterfly.jpg```.
 6) Look at the output image in the generated folder and verify that your chosen settings look okay.
 7) Put the entire generated folder into your quartus project directory (that's the same place as your .qpf file).
 8) Add the three generated .sv files in the folder to your Quartus project (rom, palette, and example).
 9) Instantiate the example module in your project and  connect all the signals.
 10) Compile then program the FPGA and verify that you see your generated image on the screen. 
+
+# Generated Files:
+
+These files are found in 
+* ```<image_name>.mif``` - Memory Initialization File with palettized image data in row-major order.
+* ```<image_name>_example.py``` - example color mapper file. ADD TO QUARTUS PROJECT.
+* ```<image_name>_out.png``` - output generated png.
+* ```<image_name>_palette.sv``` - output palettes in a SystemVerilog file. ADD TO QUARTUS PROJECT.
+* ```<image_name>_rom.sv``` - inferred ROM initialized by the .mif file. ADD TO QUARTUS PROJECT.
+
+
+# Python Files:
+
+* ```main.py``` - top python file, execute this.
+* ```src/palettizer.py``` - generates palettes and palettized image.
+* ```src/write_example.py``` - generates the example module.
+* ```src/write_mif.py``` - generates the Memory Initialization File (MIF).
+* ```src/write_palette.py``` - generates the palette module.
+* ```src/write_png.py``` - generates the output picture.
+* ```src/write_rom.py``` - generates the inferred ROM module.
 
 # FAQ:
 
@@ -26,7 +46,7 @@ Don't worry about it.
 Also don't worry about it.
 
 * *Error (127001): Can't find Memory Initialization File or Hexadecimal (Intel-Format) File ./<image_name>/<image_name>.mif for ROM instance ALTSYNCRAM*  
-This one you worry about. The comment on <image_name>_rom.sv (7) is a compiler directive to initialize the inferred M9K memory with the contents in a given .mif file. This error message means it couldn't find the generated .mif file. There are a few things you can do here:
+The comment on <image_name>_rom.sv (7) is a compiler directive to initialize the inferred M9K memory with the contents in a given .mif file. This error message means it couldn't find the generated .mif file. There are a few things you can do here:
 	* Option 1 (recommended): Make sure the generated folder is in the same place as the .qpf (quartus project) file. The specified path in the generated rom assumes this.
 	* Option 2 (could be easier): Change the path in the compiler directive to the actual path of the generated .mif file. It could also be an absolute path.
 	
@@ -45,7 +65,7 @@ https://scikit-learn.org/stable/modules/clustering.html#k-means
 
 * The picture in the ROM is stored in row-major order. At every address is stored one pixel's palette index.
 
-* If you are making sprites, don't just use the example. Instead, instantiate and use the rom and the palette in your existing color mapper module similarly to the example, then change the rom address calculation and other stuff (yes this isn't that specific, but sprites are a very broad thing with many implementations).
+* If you are making sprites, **don't just use the example**! Instead, instantiate and use the rom and the palette in your existing color mapper module similarly to the example, then change the rom address calculation and other stuff (yes this isn't that specific, but sprites are a very broad thing with many implementations).
 
 * To do transparency for your sprites:
 	1) In the original image, make the background color drastically different from the rest of the image. Hot pink is usually a good color.
@@ -85,32 +105,13 @@ pic_example pic ( // the generated example. in this case, the image was called "
 Essentially, do:
 	1) ```python -m venv .venv``` This creates a virtual environment, the files being inside a directory ```.venv/```
 
-	2) ```./.venv/Scripts/Activate.ps1``` This activates the virtual environment. Use a different activation script depending on your operating system.
+	2) ```./.venv/Scripts/Activate.ps1``` This activates the virtual environment. Use a different activation script depending on your operating system. In this case, .ps1 is for Windows PowerShell
 
 	3) Run ```pip install -r requirements.txt``` The packages will no longer clutter the global directory where you may never use them again.
 
 * Deciding how many colors to use depends on your image. You will need to make a compromise between resolution and number of colors. Some images are mostly of one range of colors, while others may go across the entire spectrum. For example, "butterfly.jpg" is mostly yellow, so you can get away with only using 4 bits and thus having the full 640x480 resolution. "cat.jpg" uses many more colors though, so it will look better if you use more bits for more colors and sacrifice some resolution.
 
 * M9K usage is weird. Just because a M9K has a certain number of bits, doesn't mean that it will be able to use it all effectively, depending on the data width.
-
-# Generated Files:
-
-* ```<image_name>.mif``` - Memory Initialization File with palettized image data in row-major order.
-* ```<image_name>_example.py``` - example color mapper file.
-* ```<image_name>_out.png``` - output generated png.
-* ```<image_name>_palette.sv``` - output palettes in a SystemVerilog file.
-* ```<image_name>_rom.sv``` - inferred ROM initialized by the .mif file. 
-
-
-# Python Files:
-
-* ```main.py``` top python file, execute this.
-* ```src/palettizer.py``` generates palettes and palettized image.
-* ```src/write_example.py``` generates the example module.
-* ```src/write_mif.py``` generates the Memory Initialization File (MIF).
-* ```src/write_palette.py``` generates the palette module.
-* ```write_png.py``` generates the output picture.
-* ```write_rom.py``` generates the inferred ROM module.
 
 # Known Bugs:
 
