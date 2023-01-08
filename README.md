@@ -30,6 +30,12 @@ This one you worry about. The comment on <image_name>_rom.sv (7) is a compiler d
 	* Option 1 (recommended): Make sure the generated folder is in the same place as the .qpf (quartus project) file. The specified path in the generated rom assumes this.
 	* Option 2 (could be easier): Change the path in the compiler directive to the actual path of the generated .mif file. It could also be an absolute path.
 	
+* *Error (170040): Can't place all RAM cells in design*  
+Oh no! You have no M9K RAM cells left. You have a few options here:  
+	* Reduce the resolution for your image when generating.
+	* Reduce the number color bits for image when generating.
+	* Use SDRAM and frame buffers.
+	
 * *How does this tool work?*  
 Essentially, I took from ECE 311 Lab 4 Exercise 6 the provided LM Quantizer, somewhat simplified it, then created a bunch of wrapper code that generates the modules and assets. Here is some further reading into k-means clustering:  
 https://en.wikipedia.org/wiki/K-means_clustering  
