@@ -7,15 +7,15 @@ I created this tool because I saw so many people store their sprite and backgrou
 # How to use:
 
 1) Download Python 3 (developed on 3.11.1 for Windows 10).
-2) Open a terminal. (PowerShell on Windows) (Optional: Use a python virtual environment, instructions below).
-3) Run ```pip install -r requirements.txt```.
-4) Run ```python main.py```.
-5) Follow the instructions in the terminal. There are two provided images to try out: ```cat.jpg``` and ```butterfly.jpg```.
-6) Look at the output image in the generated folder and verify that your chosen settings look okay.
-7) Put the entire generated folder into your quartus project directory (that's the same place as your .qpf file).
-8) Add the three generated .sv files in the folder to your Quartus project (rom, palette, and example).
-9) Instantiate the example module in your project and  connect all the signals.
-10) Compile then program the FPGA and verify that you see your generated image on the screen. 
+2) Download this entire repository.
+3) Open a terminal inside this repository. (PowerShell on Windows) (Optional: Use a python virtual environment, instructions below).
+4) Run ```pip install -r requirements.txt```. This installs all the required packages.
+5) Run ```python main.py```.
+6) Follow the instructions in the terminal. There are two provided images to try out: ```cat.jpg``` and ```butterfly.jpg```.
+7) Look at the output image in the generated folder and verify that your chosen settings look okay.
+8) Put the entire generated folder into your quartus project directory (that's the same place as your .qpf file).
+9) Add the three generated .sv files in the folder to your Quartus project (rom, palette, and example).
+10) Instantiate the example module in your project, connect all the signals, compile, program, and verify that you see your generated image on the screen!
 
 # Generated Files:
 
