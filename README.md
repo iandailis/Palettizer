@@ -63,6 +63,14 @@ https://scikit-learn.org/stable/modules/clustering.html#k-means
 
 # Notes/Recommendations:
 
+* Use a virtual environment when installing python packages. Makes your future life easier. Instructions are here: https://docs.python.org/3/library/venv.html  
+Essentially, do:
+	1) ```python -m venv .venv``` This creates a virtual environment, the files being inside a directory ```.venv/```
+
+	2) ```./.venv/Scripts/Activate.ps1``` This activates the virtual environment. Use a different activation script depending on your operating system. In this case, .ps1 is for Windows PowerShell
+
+	Now, you can download packages without cluttering the global directory!
+
 * The picture in the ROM is stored in row-major order. At every address is stored one pixel's palette index.
 
 * If you are making sprites, **don't just use the example**! Instead, instantiate and use the rom and the palette in your existing color mapper module similarly to the example, then change the rom address calculation and other stuff (yes this isn't that specific, but sprites are a very broad thing with many implementations).
@@ -100,15 +108,6 @@ pic_example pic ( // the generated example. in this case, the image was called "
 	.blue    (VGA_B)
 );
 ```
-
-* Use a virtual environment when installing python packages. Makes your future life easier. Instructions are here: https://docs.python.org/3/library/venv.html  
-Essentially, do:
-	1) ```python -m venv .venv``` This creates a virtual environment, the files being inside a directory ```.venv/```
-
-	2) ```./.venv/Scripts/Activate.ps1``` This activates the virtual environment. Use a different activation script depending on your operating system. In this case, .ps1 is for Windows PowerShell
-
-	Now, you can download packages without cluttering the global directory!
-
 
 * Deciding how many colors to use depends on your image. You will need to make a compromise between resolution and number of colors. Some images are mostly of one range of colors, while others may go across the entire spectrum. For example, "butterfly.jpg" is mostly yellow, so you can get away with only using 4 bits and thus having the full 640x480 resolution. "cat.jpg" uses many more colors though, so it will look better if you use more bits for more colors and sacrifice some resolution.
 
