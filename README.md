@@ -54,7 +54,7 @@ The comment on <image_name>_rom.sv (7) is a compiler directive to initialize the
 Oh no! You have no M9K RAM cells left. You have a few options here:  
 	* Reduce the resolution for your image when generating.
 	* Reduce the number color bits for your image when generating.
-	* (difficult and ususally overkill) Use SDRAM and frame buffers.
+	* (difficult and usually overkill) Use SDRAM and frame buffers.
 	
 * *How does this tool work?*  
 I took from ECE 311 Lab 4 Exercise 6 the provided LM Quantizer, somewhat simplified it, then created a bunch of wrapper code that generates the modules and assets. Here is some further reading into k-means clustering:  
