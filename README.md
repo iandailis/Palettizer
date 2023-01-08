@@ -21,10 +21,10 @@ I created this tool because I saw so many people store their sprite and backgrou
 
 These files are found in 
 * ```<image_name>.mif``` - Memory Initialization File with palettized image data in row-major order.
-* ```<image_name>_example.py``` - example color mapper file. ADD TO QUARTUS PROJECT.
+* ```<image_name>_example.py``` - example color mapper file. **ADD TO QUARTUS PROJECT**.
 * ```<image_name>_out.png``` - output generated png.
-* ```<image_name>_palette.sv``` - output palettes in a SystemVerilog file. ADD TO QUARTUS PROJECT.
-* ```<image_name>_rom.sv``` - inferred ROM initialized by the .mif file. ADD TO QUARTUS PROJECT.
+* ```<image_name>_palette.sv``` - output palettes in a SystemVerilog file. **ADD TO QUARTUS PROJECT**.
+* ```<image_name>_rom.sv``` - inferred ROM initialized by the .mif file. **ADD TO QUARTUS PROJECT**.
 
 
 # Python Files:
