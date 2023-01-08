@@ -54,7 +54,7 @@ https://scikit-learn.org/stable/modules/clustering.html#k-means
 
 * Here's an example for how to instantiate the example in your top level (to verify everything was generated/added correctly):  
 
-```
+```systemverilog
 logic vga_clk, blank;
 logic [9:0] DrawX, DrawY;
 
