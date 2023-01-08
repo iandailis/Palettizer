@@ -13,20 +13,34 @@ Therefore, I created this so you can still have beautiful pictures with low comp
 4) Run ```python main.py```
 5) Follow the instructions in the terminal. There are two provided images to try out.
 6) Look at the generated output image in the generated folder and decide if the settings were good enough.
-7) Put the generated folder into your main project directory (that's the same place as your .qpf file).
+7) Put the entire generated folder into your main project directory (that's the same place as your .qpf file).
 8) Add the three .sv files in the folder to your Quartus project (rom, palette, and example).
 9) Instantiate the example module in your project, connect all the signals, and compile.
 10) Program the FPGA and verify that you see your generated image on the screen. If so, the tool has worked!
+
+# FAQ:
+
+* *Warning (10858): Verilog HDL warning at <image_name>_rom.sv(7): object memory used but never assigned*  
+Don't worry about it.
+
+* *Warning (10230): Verilog HDL assignment warning at <image_name>_example.sv(12): truncated value with size 32 to match size of target (11)*  
+Also don't worry about it.
+
+* *Error (127001): Can't find Memory Initialization File or Hexadecimal (Intel-Format) File ./<image_name>/<image_name>.mif for ROM instance ALTSYNCRAM*  
+This one you worry about. The comment on <image_name>_rom.sv (7) is a compiler directive to initialize the inferred M9K memory with the contents in a given .mif file. This error message means it couldn't find the generated .mif file. There are a few things you can do here:
+	* Make sure the generated folder is in the same place as the .qpf (quartus project) file. The specified path in the generated rom assumes this
+	* Change the path to the actual path of the generated .mif file
 
 # Notes/Recommendations:
 
 * The picture in the ROM is stored in row-major order. At every address is stored one pixel's palette index.
 
-* If you are making sprites, don't just use the example. Instead, instantiate and use the rom and the palette in your existing color mapper module similarly to the example, then change the rom address calculation and other stuff.
+* If you are making sprites, don't just use the example. Instead, instantiate and use the rom and the palette in your existing color mapper module similarly to the example, then change the rom address calculation and other stuff (yes this isn't that specific, but sprites are a very broad thing with many implementations).
 
 * To do transparency for your sprites:
 	1) In the original image, make the background color drastically different from the rest of the image. Hot pink is usually a good color.
-	2) When setting the VGA R/G/B outputs based on DrawX/Y, don't just look at sprite_on. Also make sure the palette module's r/g/b output isn't that same hot pink.  
+	2) Use the tool and regenerate the modules/assets.
+	3) When setting the VGA R/G/B outputs based on DrawX/Y, don't just look at sprite_on. Also make sure the palette module's r/g/b output isn't that same hot pink.  
 
 * Here's an example for how to instantiate the example in your top level (to verify everything was generated/added correctly):  
 
@@ -70,10 +84,5 @@ Now, run the pip commands to install packages and it will not be cluttering the 
 
 * M9K usage is weird. Just because a M9K has a certain number of bits, doesn't mean that it will be able to use it all effectively, depending on the data width.
 
-# FAQ:
-
-* *Warning (10858): Verilog HDL warning at pic_rom.sv(7): object memory used but never assigned* - Don't worry about it, if the in the
-
-
 Enjoy!
--Ian
+-Ian D
