@@ -1,8 +1,6 @@
 # Palettizer
 
-Generates SystemVerilog modules that store a compressed image into inferred M9K on-chip memory.
-
-I created this tool because I saw so many people store their sprite and background data with raw pixel values, causing either low resolution or very long compile times, and that just pained me. This tool generates SystemVerilog modules that output beautiful pictures with low compile times, efficient compression, and easy integration.
+Generates SystemVerilog modules that store a palettized image into inferred M9K on-chip memory.
 
 # How to use:
 
