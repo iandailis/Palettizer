@@ -6,16 +6,16 @@ I created this tool because I saw so many people store their sprite and backgrou
 
 # How to use:
 
-1) Download Python (developed on 3.11.1 for Windows 10, but other configurations should also work).
-2) Open a terminal. For Windows, use powershell.
-3) Get all the required libraries by running ```pip install -r requirements.txt```.
+1) Download Python 3 (developed on 3.11.1 for Windows 10).
+2) Open a terminal. (powershell on Windows). (Optional: Activate your python virtual environment)
+3) Run ```pip install -r requirements.txt```.
 4) Run ```python main.py```
-5) Follow the instructions in the terminal. There are two provided images to try out.
-6) Look at the generated output image in the generated folder and decide if the settings were good enough.
-7) Put the entire generated folder into your main project directory (that's the same place as your .qpf file).
+5) Follow the instructions in the terminal. There are two provided images to try out: cat.jpg and butterfly.jpg
+6) Look at the output image in the generated folder and verify that your chosen settings look okay.
+7) Put the entire generated folder into your quartus project directory (that's the same place as your .qpf file).
 8) Add the three .sv files in the folder to your Quartus project (rom, palette, and example).
-9) Instantiate the example module in your project, connect all the signals, and compile.
-10) Program the FPGA and verify that you see your generated image on the screen. If so, the tool has worked!
+9) Instantiate the example module in your project and  connect all the signals.
+10) Compile then program the FPGA and verify that you see your generated image on the screen. If so, the tool has worked!
 
 # FAQ:
 
@@ -92,6 +92,25 @@ Essentially, do:
 * Deciding how many colors to use depends on your image. You will need to make a compromise between resolution and number of colors. Some images are mostly of one range of colors, while others may go across the entire spectrum. For example, "butterfly.jpg" is mostly yellow, so you can get away with only using 4 bits and thus having the full 640x480 resolution. "cat.jpg" uses many more colors though, so it will look better if you use more bits for more colors and sacrifice some resolution.
 
 * M9K usage is weird. Just because a M9K has a certain number of bits, doesn't mean that it will be able to use it all effectively, depending on the data width.
+
+# Generated Files:
+
+* <image_name>.mif - Memory Initialization File with palettized image data in row-major order.
+* <image_name>_example.py - example color mapper file.
+* <image_name>_out.png - output generated png.
+* <image_name>_palette.sv - output palettes in a SystemVerilog file.
+* <image_name>_rom.sv - inferred ROM initialized by the .mif file. 
+
+
+# Python Files:
+
+* ```main.py``` top python file, execute this.
+* ```src/palettizer.py``` generates palettes and palettized image.
+* ```src/write_example.py``` generates the example module.
+* ```src/write_mif.py``` generates the Memory Initialization File (MIF).
+* ```src/write_palette.py``` generates the palette module.
+* ```write_png.py``` generates the output picture.
+* ```write_rom.py``` generates the inferred ROM module.
 
 # Known Bugs:
 
