@@ -7,7 +7,7 @@ I created this tool because I saw so many people store their sprite and backgrou
 # How to use:
 
 1) Download Python 3 (developed on 3.11.1 for Windows 10).
-2) Open a terminal. (PowerShell on Windows) (Optional: Activate your python virtual environment, instructions below).
+2) Open a terminal. (PowerShell on Windows) (Optional: Use a python virtual environment, instructions below).
 3) Run ```pip install -r requirements.txt```.
 4) Run ```python main.py```.
 5) Follow the instructions in the terminal. There are two provided images to try out: ```cat.jpg``` and ```butterfly.jpg```.
