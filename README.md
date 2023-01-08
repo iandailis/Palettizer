@@ -115,7 +115,7 @@ Essentially, do:
 
 # Known Bugs:
 
-* At low resolutions there are some visual artifacts when using the example mapper. Not sure why.
+* At low resolutions there are some visual artifacts when using the example mapper.
 
 Enjoy!
 -Ian D
