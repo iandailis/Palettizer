@@ -33,7 +33,7 @@ This one you worry about. The comment on <image_name>_rom.sv (7) is a compiler d
 * *Error (170040): Can't place all RAM cells in design*  
 Oh no! You have no M9K RAM cells left. You have a few options here:  
 	* Reduce the resolution for your image when generating.
-	* Reduce the number color bits for image when generating.
+	* Reduce the number color bits for your image when generating.
 	* Use SDRAM and frame buffers.
 	
 * *How does this tool work?*  
