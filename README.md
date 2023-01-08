@@ -95,11 +95,11 @@ Essentially, do:
 
 # Generated Files:
 
-* <image_name>.mif - Memory Initialization File with palettized image data in row-major order.
-* <image_name>_example.py - example color mapper file.
-* <image_name>_out.png - output generated png.
-* <image_name>_palette.sv - output palettes in a SystemVerilog file.
-* <image_name>_rom.sv - inferred ROM initialized by the .mif file. 
+* ```<image_name>.mif``` - Memory Initialization File with palettized image data in row-major order.
+* ```<image_name>_example.py``` - example color mapper file.
+* ```<image_name>_out.png``` - output generated png.
+* ```<image_name>_palette.sv``` - output palettes in a SystemVerilog file.
+* ```<image_name>_rom.sv``` - inferred ROM initialized by the .mif file. 
 
 
 # Python Files:
