@@ -9,13 +9,45 @@ Therefore, I created this so you can still have beautiful pictures with low comp
 
 1) Download Python (developed on 3.11.1 for Windows 10, but other configurations should also work).
 2) Open a terminal. For Windows, use powershell.
-3) Get all the required libraries by running ```pip install -r requirements.txt```. A virtual environment is recommended here but not required.
+3) Get all the required libraries by running ```pip install -r requirements.txt```.
 4) Run ```python main.py```
 5) Follow the instructions in the terminal. There are two provided images to try out.
 6) Look at the generated output image in the generated folder and decide if the settings were good enough.
-7) Put the generated folder into your main project directory.
+7) Put the generated folder into your main project directory (that's the same place as your .qpf file).
+8) Add the three .sv files in the folder to your Quartus project (rom, palette, and example).
+9) Instantiate the example module in your project, connect all the signals, and compile.
+10) Program the FPGA and verify that you see your generated image on the screen. If so, the tool has worked!
 
 # Things to note:
+
+Here's an example for how to instantiate the example in your top level:
+
+```
+logic vga_clk, blank;
+logic [9:0] DrawX, DrawY;
+
+vga_controller vga (
+	.Clk       (MAX10_CLK1_50),
+	.Reset     (1'b0),
+	.hs        (VGA_HS),
+	.vs        (VGA_VS),
+	.pixel_clk (vga_clk),
+	.blank     (blank),
+	.sync      (),
+	.DrawX     (DrawX),
+	.DrawY     (DrawY)
+);
+
+pic_example pic (
+	.vga_clk (vga_clk),
+	.DrawX   (DrawX), 
+	.DrawY   (DrawY),
+	.blank   (blank),
+	.red     (VGA_R),
+	.green   (VGA_G),
+	.blue    (VGA_B)
+);
+```
 
 - Use a virtual environment when installing python packages. Makes your future life easier. Instructions are here: https://docs.python.org/3/library/venv.html
 
