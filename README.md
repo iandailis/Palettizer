@@ -2,8 +2,7 @@
 
 Generates SV modules that output a given image, compressed using k-means clustering.
 
-Wanted to create this because I saw so many people store their sprite and background data with raw pixel values, causing either low resolution or very long compile times, and that just pained me.
-Therefore, I created this so you can still have beautiful pictures with low compile times, efficient compression, and easy integration.
+I created this tool because I saw so many people store their sprite and background data with raw pixel values, causing either low resolution or very long compile times, and that just pained me. This tool generates SystemVerilog modules that output beautiful pictures with low compile times, efficient compression, and easy integration.
 
 # How to use:
 
@@ -28,8 +27,13 @@ Also don't worry about it.
 
 * *Error (127001): Can't find Memory Initialization File or Hexadecimal (Intel-Format) File ./<image_name>/<image_name>.mif for ROM instance ALTSYNCRAM*  
 This one you worry about. The comment on <image_name>_rom.sv (7) is a compiler directive to initialize the inferred M9K memory with the contents in a given .mif file. This error message means it couldn't find the generated .mif file. There are a few things you can do here:
-	* Make sure the generated folder is in the same place as the .qpf (quartus project) file. The specified path in the generated rom assumes this
-	* Change the path to the actual path of the generated .mif file
+	* Option 1 (recommended): Make sure the generated folder is in the same place as the .qpf (quartus project) file. The specified path in the generated rom assumes this.
+	* Option 2 (could be easier): Change the path in the compiler directive to the actual path of the generated .mif file. It could also be an absolute path.
+	
+* *How does this tool work?*  
+Essentially, I took from ECE 311 Lab 4 Exercise 6 the provided LM Quantizer, somewhat simplified it, then created a bunch of wrapper code that generates the modules and assets. Here is some further reading into k-means clustering:  
+https://en.wikipedia.org/wiki/K-means_clustering  
+https://scikit-learn.org/stable/modules/clustering.html#k-means  
 
 # Notes/Recommendations:
 
@@ -72,13 +76,12 @@ pic_example pic ( // the generated example. in this case, the image was called "
 ```
 
 * Use a virtual environment when installing python packages. Makes your future life easier. Instructions are here: https://docs.python.org/3/library/venv.html  
-
 Essentially, do:
-```python -m venv .venv``` This creates a virtual environment, the files being inside a directory ```.venv/```
+	1) ```python -m venv .venv``` This creates a virtual environment, the files being inside a directory ```.venv/```
 
-```./.venv/Scripts/Activate.ps1``` This activates the virtual environment. Use a different activation script depending on your operating system.
+	2) ```./.venv/Scripts/Activate.ps1``` This activates the virtual environment. Use a different activation script depending on your operating system.
 
-Now, run the pip commands to install packages and it will not be cluttering the global directory where you may never use it again.
+	3) Run ```pip install -r requirements.txt``` The packages will no longer clutter the global directory where you may never use them again.
 
 * Deciding how many colors to use depends on your image. You will need to make a compromise between resolution and number of colors. Some images are mostly of one range of colors, while others may go across the entire spectrum. For example, "butterfly.jpg" is mostly yellow, so you can get away with only using 4 bits and thus having the full 640x480 resolution. "cat.jpg" uses many more colors though, so it will look better if you use more bits for more colors and sacrifice some resolution.
 
