@@ -28,7 +28,7 @@ Therefore, I created this so you can still have beautiful pictures with low comp
 	1) In the original image, make the background color drastically different from the rest of the image. Hot pink is usually a good color.
 	2) When setting the VGA R/G/B outputs based on DrawX/Y, don't just look at sprite_on. Also make sure the palette module's r/g/b output isn't that same hot pink.  
 
-* Here's an example for how to instantiate the example in your top level:  
+* Here's an example for how to instantiate the example in your top level (to verify everything was generated/added correctly):  
 
 ```
 logic vga_clk, blank;
