@@ -105,9 +105,9 @@ pic_example pic ( // the generated example. in this case, the image was called "
 Essentially, do:
 	1) ```python -m venv .venv``` This creates a virtual environment, the files being inside a directory ```.venv/```
 
-	2) ```./.venv/Scripts/Activate.ps1``` This activates the virtual environment. Use a different activation script depending on your operating system. In this case, .ps1 is for Windows PowerShell
+	2) ```./.venv/Scripts/Activate.ps1``` This activates the virtual environment. Use a different activation script depending on your operating system. In this case, .ps1 is for Windows PowerShell  
+Now, you can download packages without cluttering the global directory!
 
-	3) Run ```pip install -r requirements.txt``` The packages will no longer clutter the global directory where you may never use them again.
 
 * Deciding how many colors to use depends on your image. You will need to make a compromise between resolution and number of colors. Some images are mostly of one range of colors, while others may go across the entire spectrum. For example, "butterfly.jpg" is mostly yellow, so you can get away with only using 4 bits and thus having the full 640x480 resolution. "cat.jpg" uses many more colors though, so it will look better if you use more bits for more colors and sacrifice some resolution.
 
