@@ -17,7 +17,7 @@ Generates SystemVerilog modules that store a palettized image into inferred M9K 
 
 # Generated Files:
 
-These files are found in <image_name>/
+These files are found in ```<image_name>/```
 * ```<image_name>.qip``` - Quartus IP file. **ADD TO QUARTUS PROJECT**
 * ```<image_name>.mif``` - Memory Initialization File with palettized image data in row-major order.
 * ```<image_name>_example.py``` - example color mapper file.
