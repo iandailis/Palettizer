@@ -17,12 +17,13 @@ Generates SystemVerilog modules that store a palettized image into inferred M9K 
 
 # Generated Files:
 
-These files are found in 
+These files are found in <image_name>/
+* ```<image_name>.qip``` - Quartus IP file. **ADD TO QUARTUS PROJECT**
 * ```<image_name>.mif``` - Memory Initialization File with palettized image data in row-major order.
-* ```<image_name>_example.py``` - example color mapper file. **ADD TO QUARTUS PROJECT**.
+* ```<image_name>_example.py``` - example color mapper file.
 * ```<image_name>_out.png``` - output generated png.
-* ```<image_name>_palette.sv``` - output palettes in a SystemVerilog file. **ADD TO QUARTUS PROJECT**.
-* ```<image_name>_rom.sv``` - inferred ROM initialized by the .mif file. **ADD TO QUARTUS PROJECT**.
+* ```<image_name>_palette.sv``` - output palettes in a SystemVerilog file.
+* ```<image_name>_rom.sv``` - inferred ROM initialized by the .mif file.
 
 
 # Python Files:
