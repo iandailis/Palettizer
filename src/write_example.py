@@ -7,8 +7,9 @@ def write_example(image_name, image_shape, width, depth):
 	buildString = (
 		# module header
 		f"""module {image_name}_example (\n"""
+		f"""\tinput logic vga_clk,\n"""
 		f"""\tinput logic [9:0] DrawX, DrawY,\n"""
-		f"""\tinput logic vga_clk, blank,\n"""
+		f"""\tinput logic blank,\n"""
 		f"""\toutput logic [3:0] red, green, blue\n"""
 		f""");\n"""
 		f"""\n"""
@@ -19,8 +20,15 @@ def write_example(image_name, image_shape, width, depth):
 		f"""\n"""
 		f"""logic [3:0] palette_red, palette_green, palette_blue;\n"""
 		f"""\n"""
+		f"""logic negedge_vga_clk;\n"""
+		f"""\n"""
 
-		# address into the rom = x*xDim/640 + y*yDim/480 * xDim
+		f"""// read from ROM on negedge, set pixel on posedge\n"""
+		f"""assign negedge_vga_clk = ~vga_clk;\n"""
+		f"""\n"""
+
+		f"""// address into the rom = (x*xDim)/640 + ((y*yDim)/480) * xDim\n"""
+		f"""// this will stretch out the sprite across the entire screen\n"""
 		f"""assign rom_address = ((DrawX * {image_shape[1]}) / 640) + (((DrawY * {image_shape[0]}) / 480) * {image_shape[1]});\n"""
 		f"""\n"""
 
@@ -40,7 +48,7 @@ def write_example(image_name, image_shape, width, depth):
 
 		# instantiate the ROM
 		f"""{image_name}_rom {image_name}_rom (\n"""
-		f"""\t.clock   (vga_clk),\n"""
+		f"""\t.clock   (negedge_vga_clk),\n"""
 		f"""\t.address (rom_address),\n"""
 		f"""\t.q       (rom_q)\n"""
 		f""");\n"""

@@ -4,10 +4,11 @@ from numpy import asarray
 
 from src.palettizer import palettizer
 from src.write_mif import write_mif
-from src.write_png import write_png
 from src.write_rom import write_rom
 from src.write_palette import write_palette
 from src.write_example import write_example
+from src.write_qip import write_qip
+from src.write_png import write_png
 
 from os import makedirs
 
@@ -59,6 +60,9 @@ def main():
 
 	# create the example, which will use the palette and ROM modules
 	write_example(image_name, image_shape, width, depth)
+
+	# create the qip file
+	write_qip(image_name)
 
 	# show the result
 	write_png(image_palettized, palette, image_name, image_shape)
